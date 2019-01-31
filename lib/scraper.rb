@@ -22,9 +22,9 @@ class Scraper
     doc = Nokogiri::HTML(html)
     social_links = doc.css('.social-icon-container a')
     
-    social_links.collect do |link|
+    social = social_links.collect do |link|
       key = link.css('.social-icon').first['src'].slice(/.*\/(.*)-/, 1)
-      
+      {key: link['href']}
     end
     
     profile_quote = doc.css('.profile-quote').text
