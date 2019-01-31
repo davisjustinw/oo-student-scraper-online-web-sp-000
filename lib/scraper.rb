@@ -24,6 +24,7 @@ class Scraper
     
     social = social_links.collect do |link|
       key = link.css('.social-icon').first['src'].slice(/.*\/(.*)-/, 1)
+      key = 'blog' if key == 'rss'
       {"#{key}": link['href']}
     end
     binding.pry
