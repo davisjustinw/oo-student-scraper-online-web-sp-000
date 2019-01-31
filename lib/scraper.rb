@@ -28,8 +28,8 @@ class Scraper
       {"#{key}": link['href']}
     end
     
-    hash[profile_quote] = doc.css('.profile-quote').text
-    hash[bio] = doc.css('.bio-block p').text
+    hash[:profile_quote] = doc.css('.profile-quote').text
+    hash[:bio] = doc.css('.bio-block p').text
     binding.pry
   end
 
