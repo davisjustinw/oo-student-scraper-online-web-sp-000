@@ -22,7 +22,17 @@ class Scraper
     doc = Nokogiri::HTML(html)
     social_links = doc.css('.social-icon-container a')
     
-    hash = social_links.inject({}) do |social_hash, link|
+    Hash.new.tap do |hash|
+      social_links.inject(hash) do |social_hash, link|
+        key = link.css('.social-icon').first['src'].slice(/.*\/(.*)-/, 1)
+        key = 'blog' if key == 'rss'
+        social_hash[key.to_sym] = link['href']
+        social_hash  
+      end
+      hash[:profile_quote] = doc.css('.profile-quote').text
+      hash[:bio] = doc.css('.bio-block p').text
+    end
+=begin   hash = social_links.inject({}) do |social_hash, link|
       key = link.css('.social-icon').first['src'].slice(/.*\/(.*)-/, 1)
       key = 'blog' if key == 'rss'
       social_hash[key.to_sym] = link['href']
@@ -30,7 +40,7 @@ class Scraper
     end
     hash[:profile_quote] = doc.css('.profile-quote').text
     hash[:bio] = doc.css('.bio-block p').text
-    hash
+=end    hash
   end
 end
 
