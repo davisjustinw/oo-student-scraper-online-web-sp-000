@@ -24,7 +24,7 @@ class Scraper
     
     social = social_links.collect do |link|
       key = link.css('.social-icon').first['src'].slice(/.*\/(.*)-/, 1)
-      {key: link['href']}
+      {[key]: link['href']}
     end
     binding.pry
     profile_quote = doc.css('.profile-quote').text
