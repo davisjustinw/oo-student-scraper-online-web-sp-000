@@ -22,7 +22,7 @@ class Scraper
     doc = Nokogiri::HTML(html)
     social_links = doc.css('.social-icon-container a')
     
-    bob = social_links.inject({}) do |hash, link|
+    bob = social_links.inject({}) do |social, link|
       key = link.css('.social-icon').first['src'].slice(/.*\/(.*)-/, 1)
       key = 'blog' if key == 'rss'
       hash[key.to_sym] = link['href']
