@@ -32,6 +32,5 @@ class Scraper
     hash[:bio] = doc.css('.bio-block p').text
     hash
   end
-
 end
 
