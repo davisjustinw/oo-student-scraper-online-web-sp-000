@@ -23,7 +23,7 @@ class Scraper
     social_links = doc.css('.social-icon-container a')
     
     social_links.collect do |link|
-      
+      binding.pry
     end
     
     profile_quote = doc.css('.profile-quote').text
