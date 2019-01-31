@@ -27,7 +27,7 @@ class Scraper
       key = 'blog' if key == 'rss'
       hash[":#{key}"] = link['href']
     end
-    
+    binding.pry
     hash[:profile_quote] = doc.css('.profile-quote').text
     hash[:bio] = doc.css('.bio-block p').text
     binding.pry
