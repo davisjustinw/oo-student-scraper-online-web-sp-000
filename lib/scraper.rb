@@ -26,7 +26,7 @@ class Scraper
       key = link.css('.social-icon').first['src'].slice(/.*\/(.*)-/, 1)
       key = 'blog' if key == 'rss'
       sym = key.to_sym
-      hash[key.to_sym] = link['href']
+      hash[sym] = link['href']
     end
     binding.pry
     hash[:profile_quote] = doc.css('.profile-quote').text
