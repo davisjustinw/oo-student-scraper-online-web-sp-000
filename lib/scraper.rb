@@ -25,7 +25,7 @@ class Scraper
     hash = social_links.inject({}) do |hash, link|
       key = link.css('.social-icon').first['src'].slice(/.*\/(.*)-/, 1)
       key = 'blog' if key == 'rss'
-      hash[:"#{key}"] = link['href']
+      hash[key.to_sym] = link['href']
     end
     binding.pry
     hash[:profile_quote] = doc.css('.profile-quote').text
