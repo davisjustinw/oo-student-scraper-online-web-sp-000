@@ -25,7 +25,6 @@ class Scraper
     hash = social_links.inject({}) do |hash, link|
       key = link.css('.social-icon').first['src'].slice(/.*\/(.*)-/, 1)
       key = 'blog' if key == 'rss'
-      binding.pry
       hash[:"#{key}"] = link['href']
     end
     binding.pry
