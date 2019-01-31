@@ -26,7 +26,6 @@ class Scraper
       key = link.css('.social-icon').first['src'].slice(/.*\/(.*)-/, 1)
       key = 'blog' if key == 'rss'
       key = ":#{key}"
-      binding.pry
       hash[key] = link['href']
     end
     binding.pry
