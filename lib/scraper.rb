@@ -30,7 +30,7 @@ class Scraper
     
     hash[profile_quote] = doc.css('.profile-quote').text
     hash[bio] = doc.css('.bio-block p').text
-    
+    binding.pry
   end
 
 end
