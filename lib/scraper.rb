@@ -26,7 +26,7 @@ class Scraper
       key = link.css('.social-icon').first['src'].slice(/.*\/(.*)-/, 1)
       {key: link['href']}
     end
-    
+    binding.pry
     profile_quote = doc.css('.profile-quote').text
     bio = doc.css('.bio-block p').text
     
