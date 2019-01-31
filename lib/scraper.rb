@@ -28,10 +28,9 @@ class Scraper
       social_hash[key.to_sym] = link['href']
       social_hash
     end
-    binding.pry
     hash[:profile_quote] = doc.css('.profile-quote').text
     hash[:bio] = doc.css('.bio-block p').text
-    binding.pry
+    hash
   end
 
 end
